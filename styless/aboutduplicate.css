@@ -1,0 +1,1038 @@
+
+/* ===== PREMIUM ABOUT US SECTION WITH IMAGE AND FIXED STATS ===== */
+.spt-about {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --light-bg: #F7F7F7;
+  --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 25px 45px -15px rgba(227, 6, 19, 0.2);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  background-color: var(--white);
+  padding: 5rem 1.5rem;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.spt-about-container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+/* Section header */
+.spt-section-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.spt-section-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.spt-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.spt-section-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  max-width: 650px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+/* Two column grid */
+.spt-about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* ===== LEFT VISUAL PANEL WITH IMAGE ===== */
+.spt-about-visual {
+  position: relative;
+  height: 100%;
+  min-height: 450px;
+}
+
+.spt-image-panel {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  border-radius: 48px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  animation: sptFadeIn 1s ease-out;
+}
+
+.spt-about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.spt-image-panel:hover .spt-about-image {
+  transform: scale(1.03);
+}
+
+/* Floating energy shapes behind image */
+.spt-energy-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.25;
+  animation: sptFloat 8s infinite alternate ease-in-out;
+  z-index: 0;
+}
+
+.spt-shape-1 {
+  background: var(--primary);
+  width: 300px;
+  height: 300px;
+  top: -50px;
+  right: -30px;
+  animation-duration: 9s;
+}
+
+.spt-shape-2 {
+  background: var(--accent);
+  width: 250px;
+  height: 250px;
+  bottom: -30px;
+  left: -30px;
+  animation-duration: 11s;
+  animation-delay: 1s;
+}
+
+.spt-shape-3 {
+  background: var(--primary);
+  width: 200px;
+  height: 200px;
+  top: 40%;
+  left: 20%;
+  opacity: 0.2;
+  animation-duration: 7s;
+  animation-delay: 2s;
+}
+
+/* Gradient overlay */
+.spt-visual-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(145deg, rgba(227,6,19,0.1) 0%, rgba(255,193,7,0.1) 100%);
+  pointer-events: none;
+  z-index: 2;
+  mix-blend-mode: overlay;
+}
+
+/* ===== RIGHT CONTENT ===== */
+.spt-about-content {
+  animation: sptSlideInRight 0.8s ease-out;
+}
+
+.spt-about-label {
+  display: inline-block;
+  background: rgba(227, 6, 19, 0.08);
+  color: var(--primary);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 60px;
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.5px;
+}
+
+.spt-about-heading {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1.2rem;
+  line-height: 1.3;
+}
+
+.spt-about-description {
+  font-size: 1rem;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 2.5rem;
+  max-width: 550px;
+}
+
+/* ===== STATS GRID - PROFESSIONALLY ALIGNED ===== */
+.spt-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.spt-stat-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: 1.2rem 1rem;
+  box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
+  transition: var(--transition);
+  border: 2px solid transparent;
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: sptFadeUp 0.5s ease-out forwards;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: linear-gradient(to right, var(--white), var(--white));
+  background-size: 200% 100%;
+  background-position: 0% 0;
+}
+
+/* Yellow border effect */
+.spt-stat-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 2px;
+  background: linear-gradient(145deg, var(--accent), var(--primary));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.spt-stat-card:hover::before {
+  opacity: 1;
+}
+
+.spt-stat-card:nth-child(1) { animation-delay: 0.2s; }
+.spt-stat-card:nth-child(2) { animation-delay: 0.3s; }
+.spt-stat-card:nth-child(3) { animation-delay: 0.4s; }
+.spt-stat-card:nth-child(4) { animation-delay: 0.5s; }
+
+.spt-stat-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  background-position: 100% 0;
+}
+
+.spt-stat-card:hover .spt-stat-icon {
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.spt-stat-icon {
+  font-size: 2rem;
+  min-width: 50px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.spt-stat-content {
+  flex: 1;
+}
+
+.spt-stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+
+.spt-stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #4a5568;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Animations */
+@keyframes sptFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -20px) scale(1.1); }
+}
+
+@keyframes sptFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sptSlideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes sptFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE STYLES - PROFESSIONALLY ALIGNED ===== */
+
+/* Large Desktop */
+@media (min-width: 1280px) {
+  .spt-stats-grid {
+    gap: 1.5rem;
+  }
+  
+  .spt-stat-card {
+    padding: 1.4rem 1.2rem;
+  }
+}
+
+/* Desktop */
+@media (max-width: 1024px) {
+  .spt-about-grid {
+    gap: 2rem;
+  }
+  
+  .spt-image-panel {
+    height: 450px;
+  }
+  
+  .spt-stat-card {
+    padding: 1.1rem 0.9rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.8rem;
+    min-width: 45px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.8rem;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .spt-about-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  
+  .spt-about-visual {
+    min-height: 400px;
+    order: 1;
+  }
+  
+  .spt-about-content {
+    order: 2;
+  }
+  
+  .spt-image-panel {
+    max-width: 600px;
+    margin: 0 auto;
+    height: 400px;
+  }
+  
+  .spt-about-description {
+    max-width: 100%;
+  }
+  
+  .spt-stats-grid {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+}
+
+/* Mobile Landscape & Small Tablet */
+@media (max-width: 768px) {
+  .spt-about {
+    padding: 4rem 1.2rem;
+  }
+  
+  .spt-section-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .spt-stats-grid {
+    gap: 1rem;
+  }
+  
+  .spt-stat-card {
+    padding: 1rem 0.8rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.6rem;
+    min-width: 40px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.6rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.8rem;
+  }
+  
+  .spt-image-panel {
+    height: 350px;
+  }
+}
+
+/* Mobile Portrait */
+@media (max-width: 600px) {
+  .spt-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  .spt-stat-card {
+    padding: 1rem 1.2rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.8rem;
+    min-width: 50px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.8rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spt-about {
+    padding: 3rem 1rem;
+  }
+  
+  .spt-section-title {
+    font-size: 1.8rem;
+  }
+  
+  .spt-section-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .spt-about-heading {
+    font-size: 1.6rem;
+  }
+  
+  .spt-about-description {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+  
+  .spt-image-panel {
+    height: 280px;
+    border-radius: 32px;
+  }
+  
+  .spt-stat-card {
+    padding: 0.9rem 1rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.6rem;
+    min-width: 45px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.6rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-stat-card {
+    padding: 0.8rem 0.8rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.4rem;
+    min-width: 35px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.4rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.7rem;
+  }
+  
+  .spt-image-panel {
+    height: 220px;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: hover) {
+  .spt-stat-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* ===== FIXES FOR STATS ALIGNMENT AND SPACING ===== */
+
+/* Desktop: align stats height with image */
+@media (min-width: 901px) {
+  .spt-about-grid {
+    align-items: stretch; /* Make both columns stretch to same height */
+  }
+  
+  .spt-about-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  
+  .spt-stats-grid {
+    margin-top: auto; /* Push stats to bottom */
+    margin-bottom: 0;
+    gap: 1rem;
+  }
+  
+  /* Reduce stats card size slightly */
+  .spt-stat-card {
+    padding: 1rem 0.8rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.6rem;
+    min-width: 40px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.5rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.75rem;
+  }
+  
+  /* Ensure image panel matches height */
+  .spt-image-panel {
+    height: 100%;
+    min-height: 450px;
+    max-height: 500px;
+  }
+  
+  .spt-about-image {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+/* Mobile: fix spacing and force 2x2 grid */
+@media (max-width: 600px) {
+  /* Remove extra space between image and text */
+  .spt-about-grid {
+    gap: 1.5rem; /* Reduced from 2.5rem */
+  }
+  
+  .spt-about-visual {
+    margin-bottom: 0; /* Remove any bottom margin */
+  }
+  
+  .spt-image-panel {
+    height: 250px; /* Slightly smaller */
+    margin-bottom: 0;
+  }
+  
+  .spt-about-content {
+    margin-top: 0;
+    padding-top: 0;
+  }
+  
+  .spt-about-description {
+    margin-bottom: 1.5rem; /* Reduced from 2rem */
+  }
+  
+  /* Force 2x2 grid on mobile */
+  .spt-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr) !important; /* Force 2 columns */
+    gap: 0.8rem;
+    max-width: 100%;
+  }
+  
+  /* Make stats cards more compact */
+  .spt-stat-card {
+    padding: 0.8rem 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.3rem;
+    min-width: 30px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.65rem;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+  
+  .spt-stat-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Small Mobile (under 400px) - maintain 2x2 but adjust further */
+@media (max-width: 400px) {
+  .spt-stats-grid {
+    gap: 0.5rem;
+  }
+  
+  .spt-stat-card {
+    padding: 0.6rem 0.4rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.1rem;
+    min-width: 25px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.55rem;
+    white-space: normal; /* Allow wrapping if needed */
+  }
+  
+  .spt-image-panel {
+    height: 200px;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 340px) {
+  .spt-stat-card {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    padding: 0.5rem 0.3rem;
+  }
+  
+  .spt-stat-icon {
+    margin-bottom: 0.2rem;
+  }
+  
+  .spt-stat-content {
+    align-items: center;
+  }
+}
+
+/* Tablet adjustment */
+@media (min-width: 601px) and (max-width: 900px) {
+  .spt-stats-grid {
+    max-width: 100%;
+  }
+  
+  .spt-image-panel {
+    height: 350px;
+  }
+}
+/* ===== FIXES FOR MOBILE SPACING AND WHO WE ARE LABEL ===== */
+
+/* Mobile: remove space between image and "Who We Are" text */
+@media (max-width: 600px) {
+  .spt-about-grid {
+    gap: 1rem !important; /* Further reduced gap */
+  }
+  
+  .spt-about-visual {
+    margin-bottom: -0.5rem !important; /* Negative margin to pull content up */
+  }
+  
+  .spt-image-panel {
+    height: 220px; /* Slightly smaller */
+    margin-bottom: 0 !important;
+  }
+  
+  .spt-about-content {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Remove any top padding/margin from the first element */
+  .spt-about-label {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+  }
+  
+  /* Ensure no extra spacing from description */
+  .spt-about-description {
+    margin-bottom: 1.2rem;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .spt-about-grid {
+    gap: 0.8rem !important;
+  }
+  
+  .spt-image-panel {
+    height: 200px;
+  }
+  
+  .spt-about-visual {
+    margin-bottom: -0.8rem !important;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-about-grid {
+    gap: 0.5rem !important;
+  }
+  
+  .spt-image-panel {
+    height: 180px;
+  }
+  
+  .spt-about-visual {
+    margin-bottom: -1rem !important;
+  }
+}
+
+/* ===== FIX FOR WHO WE ARE LABEL - REMOVE EXTRA RED BG ===== */
+.spt-about-label {
+  display: inline-block;
+  background: transparent !important; /* Remove red background */
+  color: var(--primary); /* Keep text red */
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0 0 0.5rem 0; /* Remove horizontal padding, keep bottom padding */
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.5px;
+  border-bottom: 2px solid var(--accent); /* Add subtle yellow underline instead */
+  position: relative;
+}
+
+/* Optional: Add a subtle dot or accent */
+.spt-about-label::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background: var(--primary);
+}
+
+/* Adjust for mobile */
+@media (max-width: 600px) {
+  .spt-about-label {
+    margin-bottom: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+}
+
+/* Center alignment fix for tablet/mobile if needed */
+@media (max-width: 900px) {
+  .spt-about-label {
+    /* Keep left aligned even when content is centered */
+    text-align: left;
+  }
+}
+
+
+
+    /* ===== FINAL FIXES: REDUCE DESKTOP SECTION SIZE & MOBILE SPACING ===== */
+
+/* Desktop: reduce overall section size */
+@media (min-width: 901px) {
+  .spt-about {
+    padding: 3rem 1.5rem !important; /* Reduced from 5rem */
+  }
+  
+  .spt-section-header {
+    margin-bottom: 2rem !important; /* Reduced from 3.5rem */
+  }
+  
+  .spt-section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important; /* Slightly smaller */
+    margin-bottom: 0.5rem;
+  }
+  
+  .spt-section-subtitle {
+    font-size: 1rem;
+    margin: 1rem auto 0;
+    max-width: 550px;
+  }
+  
+  .spt-about-grid {
+    gap: 2rem !important; /* Reduced from 3rem */
+  }
+  
+  /* Reduce image panel size */
+  .spt-image-panel {
+    height: 400px !important; /* Reduced from 500px */
+    min-height: 400px;
+    max-height: 420px;
+    border-radius: 36px; /* Slightly smaller radius */
+  }
+  
+  /* Reduce content spacing */
+  .spt-about-heading {
+    font-size: clamp(1.6rem, 2.5vw, 2rem);
+    margin-bottom: 0.8rem;
+  }
+  
+  .spt-about-description {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  /* Make stats more compact */
+  .spt-stats-grid {
+    gap: 0.8rem;
+  }
+  
+  .spt-stat-card {
+    padding: 0.8rem 0.7rem !important;
+    gap: 0.6rem;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.4rem;
+    min-width: 35px;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.3rem;
+    margin-bottom: 0.1rem;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.7rem;
+  }
+}
+
+/* Large Desktop (1200px+) - further reduce if needed */
+@media (min-width: 1200px) {
+  .spt-about-container {
+    max-width: 1100px; /* Reduced from 1280px */
+  }
+  
+  .spt-image-panel {
+    height: 380px !important;
+  }
+}
+
+/* Mobile:徹底的にスペースを削除 (Completely eliminate space) */
+@media (max-width: 600px) {
+  /* Reset all spacing */
+  .spt-about {
+    padding: 2rem 1rem !important;
+  }
+  
+  .spt-section-header {
+    margin-bottom: 1.5rem !important;
+  }
+  
+  .spt-about-grid {
+    gap: 0 !important; /* Completely remove gap */
+    margin-top: 0;
+  }
+  
+  /* Image panel - smaller and no margin */
+  .spt-about-visual {
+    margin-bottom: -5px !important; /* Negative margin to pull up */
+    min-height: auto !important;
+  }
+  
+  .spt-image-panel {
+    height: 180px !important;
+    border-radius: 24px !important;
+    margin-bottom: 0 !important;
+  }
+  
+  /* Content - remove all top spacing */
+  .spt-about-content {
+    margin-top: -5px !important; /* Negative margin to pull up */
+    padding-top: 0 !important;
+  }
+  
+  /* Label - remove all spacing */
+  .spt-about-label {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0.2rem !important;
+    padding-bottom: 0.2rem !important;
+  }
+  
+  /* Heading - reduce spacing */
+  .spt-about-heading {
+    margin-top: 0 !important;
+    margin-bottom: 0.3rem !important;
+    font-size: 1.4rem !important;
+  }
+  
+  /* Description - minimal spacing */
+  .spt-about-description {
+    margin-bottom: 1rem !important;
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Stats grid - compact */
+  .spt-stats-grid {
+    margin-top: 0 !important;
+    gap: 0.5rem !important;
+  }
+  
+  .spt-stat-card {
+    padding: 0.5rem 0.4rem !important;
+    gap: 0.3rem !important;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .spt-image-panel {
+    height: 160px !important;
+  }
+  
+  .spt-about-visual {
+    margin-bottom: -8px !important;
+  }
+  
+  .spt-about-content {
+    margin-top: -8px !important;
+  }
+  
+  .spt-about-heading {
+    font-size: 1.3rem !important;
+  }
+  
+  .spt-stat-card {
+    padding: 0.4rem 0.3rem !important;
+  }
+  
+  .spt-stat-icon {
+    font-size: 1.2rem !important;
+    min-width: 28px !important;
+  }
+  
+  .spt-stat-number {
+    font-size: 1.1rem !important;
+  }
+  
+  .spt-stat-label {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-image-panel {
+    height: 140px !important;
+  }
+  
+  .spt-about-visual {
+    margin-bottom: -10px !important;
+  }
+  
+  .spt-about-content {
+    margin-top: -10px !important;
+  }
+  
+  .spt-about-heading {
+    font-size: 1.2rem !important;
+  }
+}
+/* ===== FIX FOR MOBILE OVERLAPPING ISSUE ===== */
+
+/* Mobile: fix overlapping between image and "Who We Are" text */
+@media (max-width: 600px) {
+  /* Remove negative margins that cause overlap */
+  .spt-about-visual {
+    margin-bottom: 0 !important; /* Remove negative margin */
+  }
+  
+  .spt-about-content {
+    margin-top: 0.5rem !important; /* Add small positive margin instead of negative */
+  }
+  
+  /* Ensure image has proper bottom spacing */
+  .spt-image-panel {
+    margin-bottom: 0.5rem !important;
+  }
+  
+  /* Keep label visible with proper spacing */
+  .spt-about-label {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0.3rem !important;
+  }
+}
+
+/* Extra Small Mobile */
+@media (max-width: 480px) {
+  .spt-about-content {
+    margin-top: 0.8rem !important;
+  }
+  
+  .spt-image-panel {
+    margin-bottom: 0.8rem !important;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-about-content {
+    margin-top: 0.6rem !important;
+  }
+  
+  .spt-image-panel {
+    margin-bottom: 0.6rem !important;
+  }
+}
