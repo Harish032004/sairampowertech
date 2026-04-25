@@ -1,0 +1,1061 @@
+
+/* ===== HERO SECTION CSS (updated right side card) ===== */
+.spt-hero {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --soft-bg: #F8F9FC;
+
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  background: var(--white);
+  overflow: hidden;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  padding: 4rem 1.5rem;
+}
+
+.spt-hero-container {
+  max-width: 1280px;
+  margin-top: -70px;
+  
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+  position: relative;
+  z-index: 5;
+}
+
+/* left content */
+.spt-hero-content {
+  animation: sptFadeUp 0.8s ease-out;
+}
+
+.spt-hero-title {
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--dark);
+  margin-bottom: 1rem;
+}
+
+.spt-highlight {
+  color: var(--primary);
+  position: relative;
+  display: inline-block;
+}
+.spt-highlight::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: var(--accent);
+  opacity: 0.3;
+  border-radius: 10px;
+  z-index: -1;
+}
+
+.spt-hero-subtitle {
+  font-size: 1.1rem;
+  color: #4a4a4a;
+  margin-bottom: 2rem;
+  max-width: 520px;
+}
+
+/* trust badges */
+.spt-trust-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+.spt-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 500;
+  color: var(--dark);
+}
+.spt-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  background: var(--accent);
+  color: var(--dark);
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* button */
+.spt-btn-quote {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 14px 42px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px -5px rgba(227,6,19,0.3);
+  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.spt-btn-quote:hover {
+  background: var(--accent);
+  color: var(--dark);
+  transform: translateY(-3px);
+  box-shadow: 0 20px 25px -8px rgba(255,193,7,0.5);
+}
+
+/* ===== RIGHT SIDE: FLOATING PRODUCT CARD ===== */
+.spt-product-showcase {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+}
+
+/* floating card */
+.spt-floating-card {
+  background: var(--white);
+  border-radius: 40px;
+  padding: 2.2rem 1.8rem;
+  box-shadow: 0 35px 60px -20px rgba(0,0,0,0.2), 0 10px 25px -8px rgba(0,0,0,0.05);
+  width: 100%;
+  max-width: 420px;
+  position: relative;
+  z-index: 20;
+  border: 1px solid rgba(255,255,255,0.5);
+  backdrop-filter: blur(4px);
+  animation: sptFloatCard 4s infinite alternate ease-in-out;
+  transition: all 0.3s;
+}
+
+.spt-floating-card:hover {
+  box-shadow: 0 45px 70px -20px rgba(227,6,19,0.2);
+}
+
+/* red top accent border */
+.spt-card-accent {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 6px;
+  background: var(--primary);
+  border-radius: 0 0 12px 12px;
+}
+
+/* card title */
+.spt-card-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 2rem;
+  text-align: center;
+  letter-spacing: -0.02em;
+}
+
+/* product list */
+.spt-product-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.spt-product-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: var(--soft-bg);
+  border-radius: 60px;
+  transition: all 0.25s ease;
+  border: 2px solid transparent;
+  cursor: default;
+}
+
+.spt-product-item:hover {
+  background: var(--accent);
+  border-color: var(--primary);
+  transform: translateX(8px) scale(1.02);
+  box-shadow: 0 8px 15px -5px rgba(255,193,7,0.4);
+}
+
+.spt-item-icon {
+  font-size: 1.8rem;
+  width: 40px;
+  text-align: center;
+}
+
+.spt-item-name {
+  font-weight: 600;
+  color: var(--dark);
+  font-size: 1.1rem;
+}
+
+/* abstract shapes behind card */
+.spt-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: 1;
+  animation: sptFloat 9s infinite alternate ease-in-out;
+}
+.spt-shape-1 {
+  background: var(--primary);
+  width: 280px;
+  height: 280px;
+  top: -30px;
+  right: 5%;
+}
+.spt-shape-2 {
+  background: var(--accent);
+  width: 250px;
+  height: 250px;
+  bottom: 10px;
+  left: 10%;
+  animation-duration: 11s;
+}
+.spt-shape-3 {
+  background: var(--primary);
+  width: 180px;
+  height: 180px;
+  bottom: 20%;
+  right: 20%;
+  opacity: 0.15;
+  filter: blur(60px);
+  animation-duration: 7s;
+}
+
+/* animations */
+@keyframes sptFloat {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(20px, -25px) scale(1.1); }
+}
+@keyframes sptFloatCard {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-12px); }
+}
+@keyframes sptFadeUp {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* MODAL styles (unchanged) */
+.spt-modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100%; height: 100%;
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(5px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.spt-modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+.spt-modal-content {
+  background: var(--white);
+  max-width: 500px;
+  width: 90%;
+  border-radius: 48px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 40px 70px -20px rgba(0,0,0,0.3);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+.spt-modal-overlay.active .spt-modal-content {
+  transform: scale(1);
+}
+.spt-modal-close {
+  position: absolute;
+  top: 20px; right: 20px;
+  background: #f0f0f0;
+  border: none;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.spt-modal-close:hover {
+  background: var(--primary);
+  color: white;
+  transform: rotate(90deg);
+}
+.spt-modal-title {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.3rem;
+}
+.spt-modal-sub {
+  color: #555;
+  margin-bottom: 2rem;
+}
+.spt-form-group {
+  margin-bottom: 1.5rem;
+}
+.spt-form-group label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+.spt-form-group input,
+.spt-form-group select {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #eaeaea;
+  border-radius: 50px;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+.spt-form-group input:focus,
+.spt-form-group select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(227,6,19,0.1);
+}
+.spt-product-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+.spt-product-options .spt-radio-item {
+  flex: 1 1 calc(50% - 12px);
+}
+.spt-product-options input[type="radio"] {
+  display: none;
+}
+.spt-product-options label {
+  display: block;
+  background: var(--soft-bg);
+  padding: 14px 8px;
+  text-align: center;
+  border-radius: 40px;
+  font-weight: 500;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.spt-product-options input[type="radio"]:checked + label {
+  background: var(--accent);
+  border-color: var(--primary);
+  font-weight: 600;
+}
+.spt-btn-submit {
+  width: 100%;
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 16px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 60px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+.spt-btn-submit:hover {
+  background: var(--accent);
+  color: var(--dark);
+}
+.spt-error {
+  color: var(--primary);
+  font-size: 0.85rem;
+  margin-top: 5px;
+  display: none;
+}
+.spt-error.show {
+  display: block;
+}
+
+/* responsive */
+@media (max-width: 900px) {
+  .spt-hero-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    text-align: center;
+  }
+  .spt-hero-subtitle { margin-left: auto; margin-right: auto; }
+  .spt-trust-badges { justify-content: center; }
+  .spt-btn-quote { margin: 0 auto; }
+  .spt-product-showcase { order: -1; }
+  .spt-floating-card { margin: 0 auto; animation: sptFloatCard 4s infinite alternate; }
+}
+@media (max-width: 480px) {
+  .spt-hero { min-height: auto; padding: 3rem 1rem; }
+  .spt-floating-card { padding: 1.8rem 1rem; }
+  .spt-product-item { padding: 0.7rem 0.8rem; }
+  .spt-item-icon { font-size: 1.5rem; }
+  .spt-item-name { font-size: 1rem; }
+  .spt-modal-content { padding: 2rem 1.2rem; }
+  .spt-product-options { flex-direction: column; }
+}
+
+
+
+    /* ===== FIXES FOR RIGHT SIDE SIZE AND MOBILE ORDER ===== */
+.spt-hero {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+}
+
+/* Desktop: reduce right side card size */
+@media (min-width: 901px) {
+  .spt-product-showcase {
+    transform: scale(0.85); /* reduces size by 15% */
+    margin-left: -5%; /* adjust alignment */
+  }
+  
+  /* optional: make container gap smaller to fit */
+  .spt-hero-container {
+    gap: 1rem;
+  }
+  
+  /* keep card animation but scaled */
+  .spt-floating-card {
+    animation: sptFloatCard 4s infinite alternate ease-in-out;
+  }
+}
+
+/* Tablet and Mobile: reorder to show left content first */
+@media (max-width: 900px) {
+  .spt-hero-container {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* left content first */
+  .spt-hero-content {
+    order: 1;
+  }
+  
+  /* right side second */
+  .spt-product-showcase {
+    order: 2;
+    margin-top: 2rem;
+    width: 100%;
+  }
+  
+  /* ensure card is properly sized on mobile */
+  .spt-floating-card {
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  /* slightly reduce card size on mobile for better fit */
+  .spt-floating-card {
+    padding: 1.8rem 1.2rem;
+  }
+  
+  .spt-product-item {
+    padding: 0.7rem 1rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  .spt-floating-card {
+    padding: 1.5rem 0.8rem;
+  }
+  
+  .spt-card-title {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .spt-product-item {
+    padding: 0.6rem 0.8rem;
+  }
+  
+  .spt-item-icon {
+    font-size: 1.4rem;
+    width: 35px;
+  }
+  
+  .spt-item-name {
+    font-size: 0.95rem;
+  }
+}
+
+/* Keep the floating animation but ensure it doesn't cause layout shifts */
+@keyframes sptFloatCard {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-8px); } /* slightly reduced movement */
+}
+
+
+    /* ===== ADDITIONAL FIXES FOR HERO SECTION SIZE AND MOBILE VISIBILITY ===== */
+
+/* Desktop: reduce overall hero section height and adjust spacing */
+@media (min-width: 901px) {
+  .spt-hero {
+    min-height: 60vh; /* reduced from 70vh */
+    padding: 2rem 1.5rem; /* reduced top/bottom padding */
+  }
+  
+  .spt-hero-container {
+    margin-top: -40px; /* adjusted from -70px to bring content up */
+    gap: 0.5rem; /* further reduced gap */
+  }
+  
+  /* make left content slightly more compact */
+  .spt-hero-title {
+    margin-bottom: 0.75rem;
+  }
+  
+  .spt-hero-subtitle {
+    margin-bottom: 1.5rem;
+    font-size: 1rem; /* slightly smaller for better proportion */
+  }
+  
+  .spt-trust-badges {
+    margin-bottom: 2rem;
+    gap: 1.2rem 1.8rem;
+  }
+  
+  .spt-btn-quote {
+    padding: 12px 38px; /* slightly smaller button */
+    font-size: 1.1rem;
+  }
+  
+  /* adjust card scaling for better proportion */
+  .spt-product-showcase {
+    transform: scale(0.8); /* slightly smaller from 0.85 */
+    margin-left: -8%;
+  }
+}
+
+/* Mobile: fix text visibility and spacing issues */
+@media (max-width: 480px) {
+  .spt-hero {
+    min-height: auto;
+    padding: 2rem 1rem; /* reduced padding */
+  }
+  
+  .spt-hero-container {
+    margin-top: 0; /* remove negative margin on mobile */
+    gap: 1.5rem;
+  }
+  
+  /* improve text readability on mobile */
+  .spt-hero-title {
+    font-size: 1.9rem; /* slightly larger for readability */
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+    padding: 0 0.25rem;
+  }
+  
+  .spt-highlight::after {
+    bottom: 4px; /* adjust highlight position for smaller text */
+    height: 6px;
+  }
+  
+  .spt-hero-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 0 0.5rem;
+    line-height: 1.5;
+    color: #4a4a4a;
+  }
+  
+  /* make trust badges more compact and readable */
+  .spt-trust-badges {
+    gap: 0.8rem 1rem;
+    margin-bottom: 1.8rem;
+    justify-content: center;
+    padding: 0 0.5rem;
+  }
+  
+  .spt-badge {
+    font-size: 0.9rem;
+    white-space: nowrap; /* prevent wrapping on small items */
+  }
+  
+  .spt-check {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  
+  /* adjust button for mobile */
+  .spt-btn-quote {
+    padding: 12px 32px;
+    font-size: 1.1rem;
+    width: 90%; /* slightly wider but not full width */
+    max-width: 280px;
+    margin: 0 auto;
+  }
+  
+  /* ensure card doesn't overflow */
+  .spt-floating-card {
+    padding: 1.5rem 0.8rem;
+    margin: 0 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+  
+  /* improve product items touch targets */
+  .spt-product-item {
+    padding: 0.7rem 0.8rem;
+    min-height: 52px; /* better touch target */
+  }
+  
+  .spt-item-icon {
+    font-size: 1.3rem;
+    width: 32px;
+  }
+  
+  .spt-item-name {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+}
+
+/* Small mobile devices (under 380px) */
+@media (max-width: 380px) {
+  .spt-hero-title {
+    font-size: 1.7rem;
+  }
+  
+  .spt-trust-badges {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  
+  .spt-badge {
+    white-space: normal; /* allow wrapping if needed */
+    text-align: left;
+    width: 100%;
+    max-width: 220px;
+  }
+  
+  .spt-btn-quote {
+    width: 100%;
+    max-width: none;
+    padding: 12px 20px;
+  }
+  
+  .spt-card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Tablet devices (481px - 900px) */
+@media (min-width: 481px) and (max-width: 900px) {
+  .spt-hero {
+    min-height: auto;
+    padding: 3rem 1.5rem;
+  }
+  
+  .spt-hero-container {
+    margin-top: 0;
+  }
+  
+  .spt-hero-title {
+    font-size: 2.4rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .spt-hero-subtitle {
+    font-size: 1.1rem;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .spt-trust-badges {
+    justify-content: center;
+    gap: 1.5rem 2rem;
+  }
+  
+  .spt-floating-card {
+    max-width: 480px; /* slightly larger on tablet */
+  }
+}
+
+/* ===== FORM RESPONSIVE FIXES - MODAL AND FORM ELEMENTS ===== */
+
+/* Modal overlay improvements */
+.spt-modal-overlay {
+  padding: 1rem; /* add padding to prevent modal touching screen edges */
+  box-sizing: border-box;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+.spt-modal-overlay.active {
+  display: flex;
+}
+
+/* Modal content - base responsive styles */
+.spt-modal-content {
+  background: var(--white);
+  max-width: 500px;
+  width: 100%;
+  max-height: 90vh; /* prevent modal from exceeding viewport height */
+  overflow-y: auto; /* allow scrolling if content is too tall */
+  border-radius: 48px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 40px 70px -20px rgba(0,0,0,0.3);
+  position: relative;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+  -webkit-overflow-scrolling: touch; /* smooth scrolling on iOS */
+}
+
+/* Desktop styles (901px and above) */
+@media (min-width: 901px) {
+  .spt-modal-content {
+    max-width: 500px;
+    padding: 2.5rem 2rem;
+  }
+  
+  .spt-form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .spt-product-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .spt-product-options .spt-radio-item {
+    flex: 1 1 calc(50% - 12px);
+  }
+}
+
+/* Tablet styles (768px to 900px) */
+@media (min-width: 768px) and (max-width: 900px) {
+  .spt-modal-content {
+    max-width: 480px;
+    padding: 2.2rem 1.8rem;
+  }
+  
+  .spt-modal-title {
+    font-size: 1.9rem;
+  }
+  
+  .spt-form-group input,
+  .spt-form-group select {
+    padding: 13px 16px;
+  }
+  
+  .spt-product-options .spt-radio-item label {
+    padding: 12px 8px;
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile landscape (480px to 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .spt-modal-content {
+    max-width: 440px;
+    padding: 2rem 1.5rem;
+    border-radius: 40px;
+  }
+  
+  .spt-modal-title {
+    font-size: 1.8rem;
+  }
+  
+  .spt-modal-sub {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .spt-form-group {
+    margin-bottom: 1.2rem;
+  }
+  
+  .spt-form-group label {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+  }
+  
+  .spt-form-group input,
+  .spt-form-group select {
+    padding: 12px 16px;
+    font-size: 0.95rem;
+  }
+  
+  .spt-product-options {
+    gap: 10px;
+  }
+  
+  .spt-product-options .spt-radio-item {
+    flex: 1 1 calc(50% - 10px);
+  }
+  
+  .spt-product-options label {
+    padding: 12px 6px;
+    font-size: 0.9rem;
+  }
+  
+  .spt-btn-submit {
+    padding: 14px;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  
+  .spt-modal-close {
+    width: 36px;
+    height: 36px;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+/* Mobile portrait (480px and below) */
+@media (max-width: 480px) {
+  .spt-modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .spt-modal-content {
+    padding: 1.8rem 1.2rem;
+    border-radius: 36px;
+    max-width: 100%;
+    width: 100%;
+    max-height: 85vh;
+  }
+  
+  .spt-modal-title {
+    font-size: 1.6rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .spt-modal-sub {
+    font-size: 0.9rem;
+    margin-bottom: 1.2rem;
+    line-height: 1.4;
+  }
+  
+  .spt-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .spt-form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+  }
+  
+  .spt-form-group input,
+  .spt-form-group select {
+    padding: 11px 14px;
+    font-size: 0.9rem;
+    border-radius: 40px;
+    -webkit-appearance: none; /* remove default styling on iOS */
+    appearance: none;
+  }
+  
+  /* Fix for select dropdown on mobile */
+  .spt-form-group select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%231A1A1A' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    padding-right: 40px;
+  }
+  
+  /* Product options - stack vertically on small mobile */
+  .spt-product-options {
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 5px;
+  }
+  
+  .spt-product-options .spt-radio-item {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+  
+  .spt-product-options label {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* Better touch targets for radio buttons */
+  .spt-product-options .spt-radio-item {
+    margin-bottom: 2px;
+  }
+  
+  /* Submit button */
+  .spt-btn-submit {
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: 50px;
+    margin-top: 1.2rem;
+    font-weight: 600;
+  }
+  
+  /* Close button - easier to tap */
+  .spt-modal-close {
+    width: 40px;
+    height: 40px;
+    top: 12px;
+    right: 12px;
+    font-size: 1.2rem;
+    background: #f0f0f0;
+    z-index: 10;
+  }
+  
+  /* Error messages */
+  .spt-error {
+    font-size: 0.75rem;
+    margin-top: 3px;
+  }
+  
+  /* Ensure form inputs don't zoom on iOS */
+  @supports (-webkit-touch-callout: none) {
+    .spt-form-group input,
+    .spt-form-group select {
+      font-size: 16px; /* Prevents zoom on focus in iOS */
+    }
+  }
+}
+
+/* Very small devices (under 360px) */
+@media (max-width: 360px) {
+  .spt-modal-content {
+    padding: 1.5rem 1rem;
+  }
+  
+  .spt-modal-title {
+    font-size: 1.4rem;
+  }
+  
+  .spt-form-group input,
+  .spt-form-group select {
+    padding: 10px 12px;
+  }
+  
+  .spt-product-options label {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+  
+  .spt-btn-submit {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+  
+  .spt-modal-close {
+    width: 36px;
+    height: 36px;
+    top: 10px;
+    right: 10px;
+  }
+}
+
+/* Handle landscape orientation on mobile */
+@media (max-height: 600px) and (max-width: 900px) {
+  .spt-modal-content {
+    max-height: 95vh;
+    padding: 1.5rem 1.2rem;
+  }
+  
+  .spt-modal-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+  }
+  
+  .spt-modal-sub {
+    margin-bottom: 0.8rem;
+  }
+  
+  .spt-form-group {
+    margin-bottom: 0.7rem;
+  }
+  
+  .spt-form-group input,
+  .spt-form-group select {
+    padding: 8px 12px;
+  }
+  
+  .spt-product-options {
+    gap: 5px;
+  }
+  
+  .spt-product-options label {
+    padding: 8px 6px;
+  }
+  
+  .spt-btn-submit {
+    padding: 10px;
+    margin-top: 0.8rem;
+  }
+}
+
+/* Ensure modal overlay has proper backdrop */
+.spt-modal-overlay {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+/* Improve focus states for accessibility */
+.spt-form-group input:focus,
+.spt-form-group select:focus,
+.spt-btn-submit:focus,
+.spt-modal-close:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Disable outline for mouse users, keep for keyboard */
+.spt-form-group input:focus:not(:focus-visible),
+.spt-form-group select:focus:not(:focus-visible),
+.spt-btn-submit:focus:not(:focus-visible),
+.spt-modal-close:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
+
+.spt-item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+}
+
+.spt-item-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

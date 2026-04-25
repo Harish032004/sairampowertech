@@ -1,0 +1,342 @@
+
+    /* ===== PREMIUM WHY CHOOSE US SECTION CSS ===== */
+.spt-why-choose {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --light-bg: #F7F7F7;
+  --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 30px 45px -15px rgba(227, 6, 19, 0.15);
+  --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  background-color: var(--light-bg);
+  padding: 5rem 1.5rem;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.spt-why-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section header */
+.spt-why-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.spt-why-title {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.spt-why-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.spt-why-subtitle {
+  font-size: 1.1rem;
+  color: #4a5568;
+  max-width: 700px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+/* Features grid */
+.spt-features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Feature card */
+.spt-feature-card {
+  background: var(--white);
+  border-radius: 32px;
+  padding: 2.5rem 1.8rem 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease, box-shadow 0.3s, transform 0.3s;
+}
+
+.spt-feature-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Red accent line */
+.spt-card-accent {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  right: 20px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 0 0 12px 12px;
+  transition: var(--transition);
+}
+
+/* Icon styles */
+.spt-icon-wrapper {
+  width: 90px;
+  height: 90px;
+  background: rgba(227, 6, 19, 0.05);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: var(--transition);
+  position: relative;
+}
+
+.spt-icon-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  transition: var(--transition);
+}
+
+.spt-feature-icon {
+  width: 48px;
+  height: 48px;
+  color: var(--primary);
+  transition: var(--transition);
+  stroke: currentColor;
+}
+
+/* Feature title */
+.spt-feature-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.8rem;
+  line-height: 1.3;
+}
+
+/* Feature description */
+.spt-feature-desc {
+  font-size: 0.95rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin: 0;
+  padding: 0 0.2rem;
+}
+
+/* Hover effects */
+.spt-feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+.spt-feature-card:hover .spt-card-accent {
+  background: var(--accent);
+  height: 5px;
+  left: 15px;
+  right: 15px;
+}
+
+.spt-feature-card:hover .spt-icon-wrapper {
+  background: rgba(255, 193, 7, 0.15);
+  transform: scale(1.05);
+}
+
+.spt-feature-card:hover .spt-icon-wrapper::after {
+  border-color: var(--accent);
+  opacity: 0.5;
+}
+
+.spt-feature-card:hover .spt-feature-icon {
+  color: var(--primary);
+  transform: scale(1.1);
+  stroke: var(--primary);
+}
+
+/* Card animation delays */
+.spt-feature-card:nth-child(1) { transition-delay: 0.05s; }
+.spt-feature-card:nth-child(2) { transition-delay: 0.1s; }
+.spt-feature-card:nth-child(3) { transition-delay: 0.15s; }
+.spt-feature-card:nth-child(4) { transition-delay: 0.2s; }
+.spt-feature-card:nth-child(5) { transition-delay: 0.25s; }
+.spt-feature-card:nth-child(6) { transition-delay: 0.3s; }
+
+/* Responsive Design */
+
+/* Tablet: 2 cards per row */
+@media (max-width: 992px) {
+  .spt-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .spt-feature-card {
+    padding: 2rem 1.5rem 1.8rem;
+  }
+  
+  .spt-icon-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .spt-feature-icon {
+    width: 42px;
+    height: 42px;
+  }
+  
+  .spt-feature-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Mobile: 1 card per row */
+@media (max-width: 768px) {
+  .spt-why-choose {
+    padding: 4rem 1.2rem;
+  }
+  
+  .spt-why-header {
+    margin-bottom: 2.5rem;
+  }
+  
+  .spt-why-title {
+    font-size: 2rem;
+  }
+  
+  .spt-why-subtitle {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  .spt-features-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    max-width: 450px;
+    margin: 0 auto;
+  }
+  
+  .spt-feature-card {
+    padding: 2.2rem 1.5rem 1.8rem;
+  }
+  
+  .spt-icon-wrapper {
+    width: 85px;
+    height: 85px;
+  }
+  
+  .spt-feature-icon {
+    width: 45px;
+    height: 45px;
+  }
+  
+  .spt-feature-title {
+    font-size: 1.4rem;
+  }
+  
+  .spt-feature-desc {
+    font-size: 0.95rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spt-why-choose {
+    padding: 3rem 1rem;
+  }
+  
+  .spt-why-title {
+    font-size: 1.8rem;
+  }
+  
+  .spt-why-subtitle {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+  
+  .spt-feature-card {
+    padding: 2rem 1.2rem 1.5rem;
+    border-radius: 28px;
+  }
+  
+  .spt-icon-wrapper {
+    width: 75px;
+    height: 75px;
+    margin-bottom: 1.2rem;
+  }
+  
+  .spt-feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .spt-feature-title {
+    font-size: 1.3rem;
+    margin-bottom: 0.6rem;
+  }
+  
+  .spt-feature-desc {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-feature-card {
+    padding: 1.8rem 1rem 1.3rem;
+  }
+  
+  .spt-icon-wrapper {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .spt-feature-icon {
+    width: 38px;
+    height: 38px;
+  }
+  
+  .spt-feature-title {
+    font-size: 1.2rem;
+  }
+  
+  .spt-feature-desc {
+    font-size: 0.85rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: hover) {
+  .spt-feature-card:hover {
+    transform: translateY(-8px);
+  }
+}

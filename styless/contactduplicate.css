@@ -1,0 +1,677 @@
+/* ===== PREMIUM CONTACT US SECTION CSS ===== */
+.spt-contact {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  --light-bg: #F7F7F7;
+  --shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 25px 45px -15px rgba(227, 6, 19, 0.15);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  background-color: var(--light-bg);
+  padding: 4rem 1.5rem;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  position: relative;
+}
+
+.spt-contact-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section header */
+.spt-contact-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.spt-contact-title {
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+  position: relative;
+  display: inline-block;
+}
+
+.spt-contact-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70px;
+  height: 4px;
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+.spt-contact-subtitle {
+  font-size: 1rem;
+  color: #4a5568;
+  max-width: 550px;
+  margin: 1.2rem auto 0;
+  line-height: 1.6;
+}
+
+/* Two column grid */
+.spt-contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: stretch; /* Makes both columns same height */
+}
+
+/* ===== LEFT SIDE: MAP ===== */
+.spt-map-wrapper {
+  height: 100%;
+  display: flex;
+}
+
+.spt-map-container {
+  width: 100%;
+  height: 100%;
+  min-height: 420px;
+  border-radius: 28px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+.spt-map-container:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.spt-map-iframe {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+/* ===== RIGHT SIDE: FORM CARD ===== */
+.spt-form-card {
+  background: var(--white);
+  border-radius: 28px;
+  padding: 2rem 2rem;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  animation: sptFadeIn 0.6s ease-out;
+}
+
+.spt-form-card:hover {
+  box-shadow: var(--shadow-hover);
+  transform: translateY(-3px);
+}
+
+.spt-form-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+}
+
+.spt-form-subtitle {
+  font-size: 0.9rem;
+  color: #718096;
+  margin-bottom: 1.5rem;
+}
+
+/* Form groups */
+.spt-form-group {
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+
+.spt-form-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--dark);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.3px;
+}
+
+.spt-form-input,
+.spt-form-select,
+.spt-form-textarea {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid #edf2f7;
+  border-radius: 16px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: var(--transition);
+  background: var(--white);
+  color: var(--dark);
+}
+
+.spt-form-input:focus,
+.spt-form-select:focus,
+.spt-form-textarea:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(227, 6, 19, 0.1);
+  transform: translateY(-1px);
+}
+
+.spt-form-input:hover,
+.spt-form-select:hover,
+.spt-form-textarea:hover {
+  border-color: var(--accent);
+}
+
+.spt-form-textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Error messages */
+.spt-error-message {
+  color: var(--primary);
+  font-size: 0.75rem;
+  margin-top: 0.2rem;
+  display: none;
+}
+
+.spt-error-message.visible {
+  display: block;
+  animation: sptShake 0.3s ease;
+}
+
+@keyframes sptShake {
+  0%, 100% { transform: translateX(0); }
+  20% { transform: translateX(-5px); }
+  40% { transform: translateX(5px); }
+  60% { transform: translateX(-3px); }
+  80% { transform: translateX(3px); }
+}
+
+/* Submit button */
+.spt-submit-btn {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  border: 2px solid transparent;
+}
+
+.spt-submit-btn:hover {
+  background: var(--accent);
+  color: var(--dark);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px -8px rgba(255, 193, 7, 0.4);
+}
+
+.spt-submit-btn:active {
+  transform: translateY(0);
+}
+
+.spt-btn-icon {
+  transition: transform 0.3s ease;
+}
+
+.spt-submit-btn:hover .spt-btn-icon {
+  transform: translateX(5px);
+}
+
+/* Alternative contact info */
+.spt-alternative-contact {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--light-bg);
+}
+
+.spt-alternative-text {
+  font-size: 0.85rem;
+  color: #718096;
+  margin-bottom: 0.8rem;
+  text-align: center;
+}
+
+.spt-contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spt-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.5rem 1rem;
+  background: var(--light-bg);
+  border-radius: 12px;
+  transition: var(--transition);
+}
+
+.spt-contact-item:hover {
+  background: rgba(255, 193, 7, 0.1);
+  transform: translateX(5px);
+}
+
+.spt-contact-icon {
+  font-size: 1.2rem;
+  min-width: 24px;
+}
+
+.spt-contact-link {
+  text-decoration: none;
+  color: var(--dark);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+}
+
+.spt-contact-link:hover {
+  color: var(--primary);
+}
+
+/* Animation */
+@keyframes sptFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 992px) {
+  .spt-contact-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .spt-map-container {
+    min-height: 350px;
+  }
+  
+  .spt-form-card {
+    padding: 2rem 1.8rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .spt-contact {
+    padding: 3rem 1.2rem;
+  }
+  
+  .spt-contact-header {
+    margin-bottom: 2rem;
+  }
+  
+  .spt-contact-title {
+    font-size: 1.8rem;
+  }
+  
+  .spt-contact-subtitle {
+    font-size: 0.95rem;
+    padding: 0 0.5rem;
+  }
+  
+  /* Mobile: Form appears first */
+  .spt-contact-grid {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .spt-form-card {
+    order: 1;
+    margin-bottom: 1.5rem;
+    padding: 1.8rem 1.5rem;
+  }
+  
+  .spt-map-wrapper {
+    order: 2;
+  }
+  
+  .spt-map-container {
+    min-height: 280px;
+  }
+  
+  .spt-form-title {
+    font-size: 1.3rem;
+  }
+  
+  .spt-form-input,
+  .spt-form-select,
+  .spt-form-textarea {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .spt-contact-info {
+    flex-direction: column;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spt-contact {
+    padding: 2.5rem 1rem;
+  }
+  
+  .spt-form-card {
+    padding: 1.5rem 1.2rem;
+    border-radius: 24px;
+  }
+  
+  .spt-form-group {
+    margin-bottom: 1rem;
+  }
+  
+  .spt-form-label {
+    font-size: 0.8rem;
+  }
+  
+  .spt-submit-btn {
+    padding: 0.9rem 1.2rem;
+    font-size: 0.95rem;
+  }
+  
+  .spt-map-container {
+    min-height: 220px;
+    border-radius: 24px;
+  }
+  
+  .spt-contact-item {
+    padding: 0.5rem 0.8rem;
+  }
+  
+  .spt-contact-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* Very Small Mobile */
+@media (max-width: 360px) {
+  .spt-form-card {
+    padding: 1.2rem 1rem;
+  }
+  
+  .spt-contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.3rem;
+  }
+  
+  .spt-contact-icon {
+    margin-bottom: 0.2rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: hover) {
+  .spt-form-card:hover {
+    transform: translateY(-3px);
+  }
+  
+  .spt-map-container:hover {
+    transform: translateY(-3px);
+  }
+}
+
+
+
+
+
+
+.spt-contact {
+  padding: 2.5rem 1rem; /* Reduced from 4rem */
+}
+
+.spt-contact-header {
+  margin-bottom: 2rem; /* Reduced from 3rem */
+}
+
+.spt-contact-title {
+  font-size: 1.8rem; /* Scaled down from 2.5rem */
+}
+
+.spt-contact-subtitle {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  max-width: 450px;
+}.spt-form-card, 
+.spt-map-container {
+  padding: 1.5rem; /* Tighter internal padding */
+  border-radius: 20px; /* Softer, smaller corners */
+  min-height: auto; 
+}
+
+.spt-map-container {
+  height: 350px; /* Fixed smaller height */
+}
+
+.spt-contact-grid {
+  gap: 1.5rem; /* Narrower gap between columns */
+}/* ===== COMPACT FORM OVERRIDES ===== */
+.spt-contact-grid {
+  align-items: start; /* Prevents form from stretching to match map height */
+  gap: 1.5rem;
+}
+
+.spt-form-card {
+  padding: 1.25rem; /* Tightened from 2rem */
+  height: auto;     /* Removes forced full height */
+  max-width: 480px; /* Limits width so it doesn't look bloated on wide screens */
+  margin: 0 auto;   /* Centers it within its grid column */
+}
+
+.spt-form-title {
+  font-size: 1.25rem; /* Smaller heading */
+  margin-bottom: 0.2rem;
+}
+
+.spt-form-subtitle {
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* Tighten the actual input fields */
+.spt-form-group {
+  margin-bottom: 0.75rem; 
+}
+
+.spt-form-input,
+.spt-form-select,
+.spt-form-textarea {
+  padding: 0.5rem 0.8rem; /* Slimmer internal padding */
+  font-size: 0.85rem;
+  border-radius: 8px;    /* Sharper, more modern corners */
+}
+
+.spt-form-textarea {
+  min-height: 70px;      /* Significantly shorter message box */
+}
+
+.spt-submit-btn {
+  padding: 0.6rem 1rem;  /* Smaller button footprint */
+  font-size: 0.9rem;
+  border-radius: 30px;
+}
+
+/* Slim down the bottom contact info */
+.spt-alternative-contact {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+}
+
+.spt-contact-item {
+  padding: 0.3rem 0.6rem;
+}/* ===== BALANCED COMPACT LAYOUT ===== */
+
+.spt-contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr; /* Map is slightly wider than form */
+  gap: 1.5rem;
+  align-items: stretch; /* Forces both columns to be exactly the same height */
+}
+
+/* LEFT SIDE: MAP (Increased slightly) */
+.spt-map-wrapper {
+  height: 100%;
+}
+
+.spt-map-container {
+  height: 100%;
+  min-height: 450px; /* Base height for the pair */
+  border-radius: 20px;
+}
+
+/* RIGHT SIDE: FORM (Reduced height) */
+.spt-form-card {
+  padding: 1.25rem 1.5rem; /* Reduced vertical padding */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spreads content to fill the map's height */
+  border-radius: 20px;
+}
+
+.spt-form-group {
+  margin-bottom: 0.6rem; /* Tightest vertical spacing */
+}
+
+.spt-form-label {
+  font-size: 0.8rem;
+  margin-bottom: 2px;
+}
+
+.spt-form-input,
+.spt-form-select {
+  padding: 0.5rem 0.8rem; /* Slimmer inputs */
+  font-size: 0.85rem;
+}
+
+.spt-form-textarea {
+  min-height: 60px; /* Reduced to save significant height */
+  padding: 0.5rem 0.8rem;
+}
+
+.spt-submit-btn {
+  padding: 0.65rem;
+  font-size: 0.9rem;
+  margin-top: 0.4rem;
+}
+
+/* Tighter bottom info to keep the form "short" */
+.spt-alternative-contact {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+}
+
+.spt-contact-item {
+  padding: 0.3rem 0.6rem;
+  margin-bottom: 2px;
+}
+/* Tighten the Section */
+.spt-contact { padding: 2.5rem 1.25rem; }
+.spt-contact-header { margin-bottom: 2rem; }
+
+/* Balanced Grid */
+.spt-contact-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+  align-items: stretch; /* Makes heights equal */
+}
+
+/* Slim Form Card */
+.spt-form-card {
+  padding: 1.25rem 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.spt-form-group { margin-bottom: 0.6rem; }
+
+.spt-form-input, .spt-form-select, .spt-form-textarea {
+  padding: 0.5rem 0.8rem;
+  font-size: 0.85rem;
+  border-radius: 8px;
+}
+
+.spt-form-textarea { min-height: 60px; }
+
+/* Increased Map Height to balance the section */
+.spt-map-container {
+  height: 100%;
+  min-height: 480px; 
+  border-radius: 20px;
+}
+
+/* Tighter Contact List */
+.spt-alternative-contact {
+  margin-top: 1rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid #eee;
+}
+
+.spt-contact-item { padding: 0.3rem 0.6rem; margin-bottom: 2px; }
+.spt-contact-link, .spt-contact-text { font-size: 0.8rem; }/* ===== MOBILE: FORM FIRST, MAP SECOND ===== */
+@media (max-width: 768px) {
+  .spt-contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  /* Form appears first */
+  .spt-form-card {
+    order: 1;
+    width: 100%;
+  }
+  
+  /* Map appears second */
+  .spt-map-wrapper {
+    order: 2;
+    width: 100%;
+  }
+  
+  .spt-map-container {
+    width: 100%;
+    min-height: 250px;
+    margin-top: 0;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spt-contact-grid {
+    gap: 1rem;
+  }
+  
+  .spt-map-container {
+    min-height: 220px;
+  }
+}

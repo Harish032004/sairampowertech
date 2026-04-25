@@ -1,0 +1,1400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sairam Power Tech · Advanced Navbar</title>
+  <!-- Font Awesome (icons) & Google Fonts (optional but consistent) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styless/navbar.css">
+ 
+  <link rel="stylesheet" href="styless/footer.css">
+   <link rel="stylesheet" href="styless/inverter.css">
+</head>
+<body>
+
+
+
+    <!-- ===== PREMIUM ENERGY LOADING ANIMATION HTML ===== -->
+<div class="spt-energy-loader" id="sptEnergyLoader">
+  <div class="spt-loader-container">
+    
+    <!-- Circular Ring Animation -->
+    <div class="spt-ring-container">
+      <div class="spt-ring-outer"></div>
+      <div class="spt-ring-inner"></div>
+      <div class="spt-energy-pulse"></div>
+      
+      <!-- Lightning Bolt Icon -->
+      <div class="spt-lightning-bolt">
+        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 2L4 14H12L11 22L20 10H12L13 2Z" fill="#FFC107" stroke="#E30613" stroke-width="1.5" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      
+      <!-- Energy Sparks -->
+      <div class="spt-spark spt-spark-1"></div>
+      <div class="spt-spark spt-spark-2"></div>
+      <div class="spt-spark spt-spark-3"></div>
+      <div class="spt-spark spt-spark-4"></div>
+      <div class="spt-spark spt-spark-5"></div>
+    </div>
+
+    <!-- Loading Text with Dots Animation -->
+    <div class="spt-loading-text">
+      <span class="spt-text-static">Initializing Power Systems</span>
+      <span class="spt-dots">...</span>
+    </div>
+
+    <!-- Energy Bar (Subtle) -->
+    <div class="spt-energy-bar">
+      <div class="spt-bar-fill"></div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ===== MAIN WEBSITE CONTENT (Hidden initially) ===== -->
+<div class="spt-main-content" id="sptMainContent" style="display: none;">
+
+<style>
+  /* ===== PREMIUM ENERGY LOADING ANIMATION CSS ===== */
+.spt-energy-loader {
+  --primary: #08c707;
+  --accent: purple;
+  --dark: #1A1A1A;
+  --white: #FFFFFF;
+  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--white);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: 'Inter', 'Poppins', sans-serif;
+}
+
+.spt-energy-loader.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.spt-loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  max-width: 400px;
+  padding: 2rem;
+}
+
+/* Ring Container */
+.spt-ring-container {
+  position: relative;
+  width: 180px;
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Outer Ring */
+.spt-ring-outer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 4px solid transparent;
+  border-top-color: var(--primary);
+  border-right-color: var(--accent);
+  border-radius: 50%;
+  animation: sptRotate 2s linear infinite;
+  box-shadow: 0 0 20px rgba(227, 6, 19, 0.2);
+}
+
+/* Inner Ring */
+.spt-ring-inner {
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border: 3px solid transparent;
+  border-bottom-color: var(--accent);
+  border-left-color: var(--primary);
+  border-radius: 50%;
+  animation: sptRotateReverse 3s linear infinite;
+  opacity: 0.7;
+}
+
+/* Energy Pulse */
+.spt-energy-pulse {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,193,7,0.2) 0%, transparent 70%);
+  animation: sptPulse 2s ease-in-out infinite;
+}
+
+/* Lightning Bolt */
+.spt-lightning-bolt {
+  position: relative;
+  z-index: 10;
+  animation: sptGlow 1.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 193, 7, 0.5));
+}
+
+.spt-lightning-bolt svg {
+  width: 80px;
+  height: 80px;
+  animation: sptFloat 3s ease-in-out infinite;
+}
+
+/* Energy Sparks */
+.spt-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: purple;
+  border-radius: 50%;
+  box-shadow: purple;
+  animation: sptSpark 2s ease-out infinite;
+}
+
+.spt-spark-1 {
+  top: 10%;
+  right: 10%;
+  animation-delay: 0.2s;
+}
+
+.spt-spark-2 {
+  bottom: 15%;
+  left: 5%;
+  animation-delay: 0.8s;
+  width: 4px;
+  height: 4px;
+}
+
+.spt-spark-3 {
+  top: 20%;
+  left: 0%;
+  animation-delay: 1.2s;
+  width: 5px;
+  height: 5px;
+}
+
+.spt-spark-4 {
+  bottom: 25%;
+  right: 0%;
+  animation-delay: 1.6s;
+  width: 7px;
+  height: 7px;
+}
+
+.spt-spark-5 {
+  top: 50%;
+  right: -10%;
+  animation-delay: 2s;
+}
+
+/* Loading Text */
+.spt-loading-text {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--dark);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1rem;
+}
+
+.spt-text-static {
+  color: var(--dark);
+}
+
+.spt-dots {
+  display: inline-block;
+  width: 40px;
+  text-align: left;
+  animation: sptDots 1.5s steps(4, end) infinite;
+  color: var(--primary);
+  font-weight: 600;
+}
+
+/* Energy Bar */
+.spt-energy-bar {
+  width: 200px;
+  height: 4px;
+  background: purple;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 0.5rem;
+}
+
+.spt-bar-fill {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  border-radius: 4px;
+  animation: sptFillBar 3s ease-out forwards;
+  box-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+}
+
+/* Animations */
+@keyframes sptRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes sptRotateReverse {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(-360deg); }
+}
+
+@keyframes sptPulse {
+  0%, 100% { 
+    transform: scale(1);
+    opacity: 0.3;
+  }
+  50% { 
+    transform: scale(1.2);
+    opacity: 0.6;
+  }
+}
+
+@keyframes sptGlow {
+  0%, 100% { 
+    filter: drop-shadow(0 0 5px rgba(255, 193, 7, 0.3));
+  }
+  50% { 
+    filter: drop-shadow(0 0 20px rgba(227, 6, 19, 0.5));
+  }
+}
+
+@keyframes sptFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+@keyframes sptSpark {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes sptDots {
+  0%, 20% { content: '.'; opacity: 0.5; }
+  40% { content: '..'; opacity: 0.7; }
+  60%, 100% { content: '...'; opacity: 1; }
+}
+
+@keyframes sptFillBar {
+  0% { width: 0%; }
+  20% { width: 20%; }
+  40% { width: 40%; }
+  60% { width: 60%; }
+  80% { width: 80%; }
+  100% { width: 100%; }
+}
+
+/* Main Content */
+.spt-main-content {
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.spt-main-content.visible {
+  opacity: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .spt-ring-container {
+    width: 150px;
+    height: 150px;
+  }
+  
+  .spt-lightning-bolt svg {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .spt-loading-text {
+    font-size: 1.2rem;
+  }
+  
+  .spt-energy-bar {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .spt-ring-container {
+    width: 120px;
+    height: 120px;
+  }
+  
+  .spt-lightning-bolt svg {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .spt-loading-text {
+    font-size: 1rem;
+    flex-direction: column;
+    gap: 2px;
+  }
+  
+  .spt-energy-bar {
+    width: 150px;
+  }
+  
+  .spt-spark {
+    transform: scale(0.8);
+  }
+}
+
+/* Reduce motion if user prefers */
+@media (prefers-reduced-motion: reduce) {
+  .spt-ring-outer,
+  .spt-ring-inner,
+  .spt-energy-pulse,
+  .spt-lightning-bolt,
+  .spt-spark {
+    animation: none;
+  }
+  
+  .spt-bar-fill {
+    width: 100%;
+  }
+}
+</style>
+<script>
+  // ===== PREMIUM ENERGY LOADING ANIMATION JAVASCRIPT =====
+(function() {
+  'use strict';
+
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initEnergyLoader);
+  } else {
+    initEnergyLoader();
+  }
+
+  function initEnergyLoader() {
+    const loader = document.getElementById('sptEnergyLoader');
+    const mainContent = document.getElementById('sptMainContent');
+    
+    if (!loader || !mainContent) return;
+
+    // Hide main content initially
+    mainContent.style.display = 'block';
+    mainContent.classList.remove('visible');
+
+    // Loading duration in milliseconds
+    const LOADING_DURATION = 3000; // 3 seconds
+
+    // Animation end handler
+    let loadingTimeout = setTimeout(() => {
+      // Fade out loader
+      loader.classList.add('fade-out');
+      
+      // Show main content
+      mainContent.classList.add('visible');
+      
+      // Remove loader from DOM after animation completes
+      setTimeout(() => {
+        loader.style.display = 'none';
+      }, 500); // Match CSS transition duration
+      
+    }, LOADING_DURATION);
+
+    // Handle energy bar animation completion
+    const energyBar = document.querySelector('.spt-bar-fill');
+    if (energyBar) {
+      energyBar.addEventListener('animationend', () => {
+        // Optional: Add subtle completion effect
+        const rings = document.querySelectorAll('.spt-ring-outer, .spt-ring-inner');
+        rings.forEach(ring => {
+          ring.style.borderColor = 'transparent';
+        });
+      });
+    }
+
+    // Preload any critical resources
+    window.addEventListener('load', () => {
+      // Ensure main content is ready
+      console.log('Page fully loaded');
+    });
+
+    // Fallback for browsers that don't support animation events
+    const fallbackTimer = setTimeout(() => {
+      if (!loader.classList.contains('fade-out')) {
+        loader.classList.add('fade-out');
+        mainContent.classList.add('visible');
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    }, LOADING_DURATION + 1000); // 4 second fallback
+
+    // Clear fallback if animations complete normally
+    setTimeout(() => {
+      clearTimeout(fallbackTimer);
+    }, LOADING_DURATION + 100);
+
+    // Handle page visibility change
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        // Page hidden - pause animations
+        loader.style.animationPlayState = 'paused';
+      } else {
+        // Page visible - resume animations
+        loader.style.animationPlayState = 'running';
+      }
+    });
+
+    // Touch device optimization
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (isTouchDevice) {
+      // Ensure smooth performance on touch devices
+      loader.style.willChange = 'opacity, transform';
+      
+      // Add touch event listeners for better interaction
+      document.addEventListener('touchstart', () => {
+        // Prevent any interference
+      }, { passive: true });
+    }
+
+    // Optional: Add keyboard accessibility
+    document.addEventListener('keydown', (e) => {
+      // Allow escape key to skip loader (accessibility)
+      if (e.key === 'Escape' && !loader.classList.contains('fade-out')) {
+        clearTimeout(loadingTimeout);
+        loader.classList.add('fade-out');
+        mainContent.classList.add('visible');
+        setTimeout(() => {
+          loader.style.display = 'none';
+        }, 500);
+      }
+    });
+
+    // Log initialization
+    console.log('Energy loader initialized with', LOADING_DURATION/1000, 'seconds duration');
+  }
+})();
+</script>
+
+
+
+<!-- STICKY NAVBAR (independent component) -->
+<div class="navbar">
+  <div class="nav-container">
+    <!-- Logo -->
+    <div class="logo" style="color: purple;">SAIRAM POWER TECH
+     <img src="imagess/baba.png" alt="Sairam Power Tech Logo" class="logo-img"></div>
+
+    <!-- Navigation links (desktop + mobile canvas) -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#about">About Us</a></li>
+      
+      <!-- Products dropdown (with icon) -->
+      <li class="dropdown">
+        <a href="#" id="productsToggle">
+          Products <i class="fas fa-chevron-down" style="font-size:0.8rem; margin-left:5px;"></i>
+        </a>
+        <!-- dropdown menu -->
+        <ul class="dropdown-menu" id="productsDropdown">
+          <li><a href="inverter.html">Inverter</a></li>
+         <li><a href="battery.html">Amaron Battery</a></li>
+          <li><a href="exidebattery.html">Exide Battery</a></li>
+          <li><a href="solar.html">Solar System</a></li>
+          <li><a href="ro.html">RO System</a></li>
+           <li><a href="stabilizer.html">Stabilizer</a></li>
+          <li><a href="watersoftner.html">Water Softner</a></li>
+          <li><a href="solarwaterheater.html">Solar Water Heater</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#contact">Contact</a></li>
+      <!-- Two Phone Numbers Container -->
+<div class="nav-contact-numbers" style="color: purple;">
+  <a href="tel:+917010161797" class="nav-phone">
+    <i class="fas fa-phone-alt"></i> 7010161797
+  </a>
+  <a href="tel:+919841273780" class="nav-phone">
+    <i class="fas fa-phone-alt"></i> 9841273780
+  </a>
+</div>
+<style>
+  /* Container for both phone numbers - Desktop */
+.nav-contact-numbers {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: 15px;
+}
+
+/* Individual phone number link styling */
+.nav-phone {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: purple;
+  padding: 6px 12px;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid #8b5cf6;
+  white-space: nowrap;
+}
+
+.nav-phone i {
+  font-size: 0.75rem;
+}
+
+.nav-phone:hover {
+  background: green;
+  border-color: #7c3aed;
+  transform: translateY(-2px);
+  color: white;
+}
+
+/* Mobile responsive styling */
+@media (max-width: 992px) {
+  .nav-contact-numbers {
+    display: none; /* Hide desktop version on mobile */
+  }
+  
+  /* Mobile contact numbers - visible in hamburger menu */
+  .mobile-contact-numbers {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    background: rgba(139, 92, 246, 0.1);
+    border-radius: 12px;
+  }
+  
+  .mobile-contact-numbers .nav-phone {
+    background: #8b5cf6;
+    color: white;
+    justify-content: center;
+    padding: 12px;
+    width: 100%;
+    border-radius: 40px;
+    font-size: 1rem;
+  }
+  
+  .mobile-contact-numbers .nav-phone i {
+    font-size: 1rem;
+  }
+  
+  .mobile-contact-numbers .nav-phone:hover {
+    background: #7c3aed;
+    transform: translateY(-2px);
+  }
+}
+
+/* Optional: Adjust for very small screens */
+@media (max-width: 1200px) and (min-width: 993px) {
+  .nav-phone {
+    padding: 5px 10px;
+    font-size: 0.75rem;
+  }
+  
+  .nav-contact-numbers {
+    gap: 8px;
+    margin-left: 10px;
+  }
+}
+</style>
+
+      <!-- optional mobile call button (hidden on desktop but visible inside mobile menu) 
+           we can add it as last item for convenience, but we keep main call now separate -->
+      <li class="mobile-call" style="margin-top:20px; border-bottom: none; width:100%;">
+        <a href="tel:+919876543210" class="callnow-nav" style="background: purple; color:white; justify-content:center; width:100%;">
+          <i class="fas fa-phone-alt"></i> Call Now
+        </a>
+      </li>
+    </ul>
+
+    <!-- Desktop Call Now button (hidden inside mobile menu, but visible inline) -->
+    <a href="tel:+919876543210" class="callnow-nav desktop-call"><i class="fas fa-phone-alt"></i> Call Now</a>
+
+    <!-- Hamburger icon -->
+    <div class="mobile-toggle" id="mobileToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+  </div>
+</div>
+
+<!-- Overlay (when mobile menu open) -->
+<div class="nav-overlay" id="navOverlay"></div>
+
+
+
+
+
+
+
+<style>
+    @media (min-width: 1024px) {
+  .spt-hero-container {
+    margin-left: 70px;
+  }
+}
+</style>
+
+
+
+
+<section class="spt-products-section">
+  <div class="spt-products-container">
+    
+    <!-- Section Header -->
+    <div class="spt-products-header">
+      <h2 class="spt-products-title">Our Battery Products</h2>
+      <p class="spt-products-subtitle">High-performance battery systems for homes and businesses with advanced technology and long-lasting backup.</p>
+    </div>
+  
+    <!-- Products Grid -->
+    <div class="spt-products-grid">
+      
+      <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>
+
+
+  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>  <!-- Product Card 1 - Luminous -->
+      <div class="spt-product-card">
+
+  <div class="spt-product-image">
+    <img src="https://i.pinimg.com/736x/b2/ff/da/b2ffda2312c44cdfee76f4eff342f202.jpg" 
+         alt="Luminous Zelio 1100 Inverter" 
+         class="spt-product-img">
+  </div>
+
+  <h3 class="spt-product-name">Luminous Zelio 1100</h3>
+  <p class="spt-product-desc">Pure sine wave inverter with advanced microcontroller for home backup.</p>
+
+  <div class="spt-product-specs">
+    <span class="spt-spec">1100VA</span>
+    <span class="spt-spec">24 Months Warranty</span>
+  </div>
+
+  <button class="spt-enquiry-btn" data-product="Luminous Zelio 1100">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+          </svg>
+    Enquire on WhatsApp
+  </button>
+
+</div>
+
+      
+
+    
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<!-- Premium Footer Section -->
+<footer class="spt-footer">
+  <div class="spt-footer-container">
+    
+    <!-- Main Footer Grid -->
+    <div class="spt-footer-grid">
+      
+      <!-- Column 1: Company Info -->
+      <div class="spt-footer-col">
+        <div class="spt-footer-logo">
+          <span class="spt-logo-primary">SAIRAM</span>
+          <span class="spt-logo-secondary">POWER TECH</span>
+        </div>
+        <p class="spt-footer-description">
+          Sairam Power Tech provides reliable power backup and water purification solutions including inverters, batteries, solar systems, and RO water systems.
+        </p>
+        <div class="spt-social-icons">
+          <a href="#" class="spt-social-icon" aria-label="Facebook">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+          <a href="#" class="spt-social-icon" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </a>
+          <a href="#" class="spt-social-icon" aria-label="WhatsApp">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Column 2: Quick Links -->
+      <div class="spt-footer-col">
+        <h4 class="spt-footer-title">Quick Links</h4>
+        <ul class="spt-footer-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+        </ul>
+      </div>
+      
+      <!-- Column 3: Our Services -->
+      <div class="spt-footer-col">
+        <h4 class="spt-footer-title">Our Services</h4>
+        <ul class="spt-footer-links">
+          <li><a href="#">Inverter Systems</a></li>
+          <li><a href="#">Battery Backup</a></li>
+          <li><a href="#">Solar Power Systems</a></li>
+          <li><a href="#">RO Water Purifiers</a></li>
+          <li><a href="#">Water Softeners</a></li>
+        </ul>
+      </div>
+      
+      <!-- Column 4: Contact Info -->
+      <div class="spt-footer-col">
+        <h4 class="spt-footer-title">Contact Info</h4>
+        <ul class="spt-footer-contact">
+          <li>
+            <span class="spt-contact-icon">📞</span>
+            <a href="tel:+919841273780">+91 98412 73780</a>
+          </li>
+          <li>
+            <span class="spt-contact-icon">📧</span>
+            <a href="mailto:info@sairampowertech.com">info@sairampowertech.com</a>
+          </li>
+          <li>
+            <span class="spt-contact-icon">📍</span>
+            <span>Chennai, Tamil Nadu</span>
+          </li>
+        </ul>
+        <a href="#contact" class="spt-footer-quote-btn" id="footerQuoteBtn">
+          Get a Quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    
+    <!-- Bottom Footer Bar -->
+    <div class="spt-footer-bottom">
+      <div class="spt-bottom-content">
+        <div class="spt-copyright">
+          © 2026 Sairam Power Tech. All rights reserved.
+        </div>
+        <div class="spt-bottom-links">
+          <a href="#">Privacy Policy</a>
+          <span class="spt-separator">|</span>
+          <a href="#">Terms & Conditions</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Floating Contact Action Widget -->
+<div class="spt-floating-widget" id="sptFloatingWidget">
+  
+  <!-- Scroll to Top Button -->
+  <div class="spt-float-btn spt-top-btn" id="sptTopBtn" aria-label="Back to Top">
+    <div class="spt-tooltip">Back to Top</div>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M12 19V5M5 12l7-7 7 7"/>
+    </svg>
+  </div>
+
+  <!-- Call Button -->
+  <a href="tel:+919841273780" class="spt-float-btn spt-call-btn" id="sptCallBtn" aria-label="Call Now">
+    <div class="spt-tooltip">Call Now</div>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M22 16.92v3a1.999 1.999 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8 10a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.574 2.81.7A2 2 0 0 1 22 16.92z"/>
+    </svg>
+  </a>
+
+  <!-- WhatsApp Button (Largest) -->
+  <a href="https://wa.me/919841273780" target="_blank" rel="noopener noreferrer" class="spt-float-btn spt-whatsapp-btn" id="sptWhatsAppBtn" aria-label="Chat on WhatsApp">
+    <div class="spt-tooltip">Chat on WhatsApp</div>
+    <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+    </svg>
+  </a>
+
+</div>
+<style>
+  /* ===== FLOATING CONTACT ACTION WIDGET CSS ===== */
+.spt-floating-widget {
+  --primary: #E30613;
+  --accent: #FFC107;
+  --whatsapp: #25D366;
+  --dark: #333333;
+  --white: #FFFFFF;
+  --shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.25);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+  position: fixed;
+  bottom: 25px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  z-index: 999;
+  font-family: 'Inter', 'Poppins', sans-serif;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+  pointer-events: none;
+}
+
+.spt-floating-widget.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* Floating Buttons */
+.spt-float-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--dark);
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+}
+
+/* WhatsApp Button (Largest) */
+.spt-whatsapp-btn {
+  width: 65px;
+  height: 65px;
+  background: var(--whatsapp);
+  color: white;
+  animation: sptPulse 4s ease-in-out infinite;
+}
+
+/* Call Button */
+.spt-call-btn {
+  background: var(--primary);
+  color: white;
+}
+
+/* Top Button */
+.spt-top-btn {
+  background: var(--dark);
+  color: white;
+}
+
+/* Hover Effects */
+.spt-float-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-hover);
+}
+
+.spt-whatsapp-btn:hover {
+  background: #128C7E; /* Darker WhatsApp color */
+}
+
+.spt-call-btn:hover {
+  background: #b0050f; /* Darker red */
+}
+
+.spt-top-btn:hover {
+  background: #1a1a1a; /* Darker gray */
+}
+
+/* Pulse Animation for WhatsApp */
+@keyframes sptPulse {
+  0%, 100% {
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+  }
+  50% {
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.6);
+  }
+}
+
+/* Tooltips */
+.spt-tooltip {
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--dark);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 30px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: var(--transition);
+  pointer-events: none;
+  box-shadow: var(--shadow);
+}
+
+.spt-tooltip::after {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  border-width: 6px;
+  border-style: solid;
+  border-color: transparent transparent transparent var(--dark);
+}
+
+.spt-float-btn:hover .spt-tooltip {
+  opacity: 1;
+  visibility: visible;
+  right: calc(100% + 15px);
+}
+
+/* Button SVG Icons */
+.spt-float-btn svg {
+  width: 28px;
+  height: 28px;
+  transition: var(--transition);
+}
+
+.spt-whatsapp-btn svg {
+  width: 34px;
+  height: 34px;
+}
+
+/* Responsive Design */
+
+/* Mobile */
+@media (max-width: 768px) {
+  .spt-floating-widget {
+    bottom: 20px;
+    right: 15px;
+    gap: 15px;
+  }
+  
+  .spt-float-btn {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .spt-whatsapp-btn {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .spt-float-btn svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .spt-whatsapp-btn svg {
+    width: 38px;
+    height: 38px;
+  }
+  
+  /* Adjust tooltip for mobile */
+  .spt-tooltip {
+    font-size: 0.8rem;
+    padding: 5px 10px;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .spt-floating-widget {
+    bottom: 15px;
+    right: 12px;
+    gap: 12px;
+  }
+  
+  .spt-float-btn {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .spt-whatsapp-btn {
+    width: 65px;
+    height: 65px;
+  }
+  
+  .spt-float-btn svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .spt-whatsapp-btn svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* Touch device optimization */
+@media (hover: none) {
+  .spt-float-btn:hover {
+    transform: none;
+  }
+  
+  .spt-tooltip {
+    display: none; /* Hide tooltips on touch devices */
+  }
+}
+
+/* Ensure buttons stay above other content */
+.spt-floating-widget {
+  isolation: isolate;
+}
+</style>
+<script>
+  // ===== FLOATING CONTACT ACTION WIDGET JAVASCRIPT =====
+(function() {
+  'use strict';
+
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFloatingWidget);
+  } else {
+    initFloatingWidget();
+  }
+
+  function initFloatingWidget() {
+    const widget = document.getElementById('sptFloatingWidget');
+    const topBtn = document.getElementById('sptTopBtn');
+    
+    if (!widget || !topBtn) return;
+
+    // SCROLL VISIBILITY
+    // Show widget only after scrolling 200px down
+    function toggleWidgetVisibility() {
+      const scrollY = window.scrollY || window.pageYOffset;
+      
+      if (scrollY > 200) {
+        widget.classList.add('visible');
+      } else {
+        widget.classList.remove('visible');
+      }
+    }
+
+    // Check initial scroll position
+    toggleWidgetVisibility();
+
+    // Add scroll event listener
+    window.addEventListener('scroll', () => {
+      toggleWidgetVisibility();
+    }, { passive: true });
+
+    // SCROLL TO TOP FUNCTIONALITY
+    topBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      // Smooth scroll to top
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+      
+      // Optional: Add haptic feedback on mobile (if supported)
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(50); // 50ms vibration
+      }
+    });
+
+    // WHATSAPP BUTTON - already handled by href
+    const whatsappBtn = document.getElementById('sptWhatsAppBtn');
+    if (whatsappBtn) {
+      whatsappBtn.addEventListener('click', (e) => {
+        // Track WhatsApp click (optional analytics)
+        console.log('WhatsApp button clicked');
+        
+        // Optional: Add vibration feedback
+        if (window.navigator && window.navigator.vibrate) {
+          window.navigator.vibrate(30);
+        }
+      });
+    }
+
+    // CALL BUTTON - already handled by href
+    const callBtn = document.getElementById('sptCallBtn');
+    if (callBtn) {
+      callBtn.addEventListener('click', (e) => {
+        // Track call click (optional analytics)
+        console.log('Call button clicked');
+        
+        // Optional: Add vibration feedback
+        if (window.navigator && window.navigator.vibrate) {
+          window.navigator.vibrate(30);
+        }
+      });
+    }
+
+    // OPTIMIZATION: Debounce scroll events for better performance
+    let isScrolling;
+    window.addEventListener('scroll', () => {
+      // Clear our timeout throughout the scroll
+      window.clearTimeout(isScrolling);
+
+      // Set a timeout to run after scrolling ends
+      isScrolling = setTimeout(() => {
+        // Scrolling has stopped
+        // You can add any post-scroll logic here if needed
+      }, 66);
+    }, { passive: true });
+
+    // RESPONSIVE: Adjust for touch devices
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    
+    if (isTouchDevice) {
+      // Add touch-friendly behavior
+      document.addEventListener('touchstart', () => {
+        // Prevent any interference
+      }, { passive: true });
+      
+      // Hide tooltips on touch devices (handled in CSS)
+    }
+
+    // ACCESSIBILITY: Keyboard navigation
+    const buttons = document.querySelectorAll('.spt-float-btn');
+    buttons.forEach(btn => {
+      btn.setAttribute('tabindex', '0');
+      btn.setAttribute('role', 'button');
+      
+      // Handle Enter key for non-anchor buttons (top button)
+      if (btn.id === 'sptTopBtn') {
+        btn.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }
+        });
+      }
+    });
+
+    // INITIALIZATION LOG
+    console.log('Floating contact widget initialized');
+  }
+})();
+</script>
+
+
+</body>
+<script src="scriptss/navbar.js"></script>
+
+<script src="scriptss/footer.js"></script>
+<script src="scriptss/inverter.js"></script>
+</html>
