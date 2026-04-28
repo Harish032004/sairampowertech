@@ -776,34 +776,43 @@
         <div class="spt-card-accent"></div>
         <h3 class="spt-card-title">Solutions We Provide</h3>
         
-        <div class="spt-product-list">
-          <!-- inverter -->
-          <div class="spt-product-item">
-            <div class="spt-item-icon"></div>
-            <span class="spt-item-name">Inverter Systems</span>
-          </div>
-          <!-- battery -->
-          <div class="spt-product-item">
-            <div class="spt-item-icon"></div>
-            <span class="spt-item-name">Battery Backup</span>
-          </div>
-          <!-- solar -->
-          <div class="spt-product-item">
-            <div class="spt-item-icon"></div>
-            <span class="spt-item-name">Solar Power</span>
-          </div>
-          <!-- ro -->
-          <div class="spt-product-item">
-            <div class="spt-item-icon"></div>
-            <span class="spt-item-name">RO Water Purifier</span>
-          </div>
-          <!-- softener -->
-          <div class="spt-product-item">
-  <div class="spt-item-icon">
-   
+      <div class="spt-product-list">
+  <!-- inverter -->
+  <div class="spt-product-item" data-url="inverter.html">
+    <div class="spt-item-icon"></div>
+    <span class="spt-item-name">Inverter Systems</span>
   </div>
-  <span class="spt-item-name">Water Softener</span>
+  <!-- battery -->
+  <div class="spt-product-item" data-url="battery.html">
+    <div class="spt-item-icon"></div>
+    <span class="spt-item-name">Battery Backup</span>
+  </div>
+  <!-- solar -->
+  <div class="spt-product-item" data-url="solar.html">
+    <div class="spt-item-icon"></div>
+    <span class="spt-item-name">Solar Power</span>
+  </div>
+  <!-- ro -->
+  <div class="spt-product-item" data-url="ro.html">
+    <div class="spt-item-icon"></div>
+    <span class="spt-item-name">RO Water Purifier</span>
+  </div>
+  <!-- softener -->
+  <div class="spt-product-item" data-url="softener.html">
+    <div class="spt-item-icon"></div>
+    <span class="spt-item-name">Water Softener</span>
+  </div>
 </div>
+
+<script>
+  document.querySelectorAll('.spt-product-item').forEach(item => {
+    item.style.cursor = 'pointer';
+    item.addEventListener('click', () => {
+      const url = item.getAttribute('data-url');
+      if (url) location.href = url;
+    });
+  });
+</script>
         </div>
       </div>
     </div>
